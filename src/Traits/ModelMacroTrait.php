@@ -35,7 +35,7 @@ trait ModelMacroTrait
                 return $this;
             }
 
-            $userid = is_null($userid) ? (int) user()->getId() : $userid;
+            $userid = is_null($userid) ? user()->getId() : $userid;
 
             if (empty($userid)) {
                 throw new MineException('Data Scope missing user_id');
@@ -53,7 +53,7 @@ trait ModelMacroTrait
             $dataScope = new class($userid, $this)
             {
                 // 用户ID
-                protected int $userid;
+                protected string $userid;
 
                 // 查询构造器
                 protected Builder $builder;
@@ -61,7 +61,7 @@ trait ModelMacroTrait
                 // 数据范围用户ID列表
                 protected array $userIds = [];
 
-                public function __construct(int $userid, Builder $builder)
+                public function __construct(string $userid, Builder $builder)
                 {
                     $this->userid  = $userid;
                     $this->builder = $builder;

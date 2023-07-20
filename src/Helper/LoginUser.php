@@ -86,9 +86,9 @@ class LoginUser
 
     /**
      * 获取当前登录用户ID
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string|int
     {
         return $this->jwt->getParserData()['id'];
     }
