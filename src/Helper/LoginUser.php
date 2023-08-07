@@ -88,9 +88,9 @@ class LoginUser
      * 获取当前登录用户ID
      * @return string
      */
-    public function getId(): string|int
+    public function getId($full = false): string|int
     {
-        return $this->jwt->getParserData()['id'];
+        return $full ? $this->jwt->getParserData()['id'] : explode('_',$this->jwt->getParserData()['id'])[0];
     }
 
     /**
