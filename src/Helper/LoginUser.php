@@ -172,6 +172,7 @@ class LoginUser
      */
     public function getToken(array $user): string
     {
+        $user['id'] = $user['id'].'_'.time();
         return $this->jwt->getToken($user);
     }
 
