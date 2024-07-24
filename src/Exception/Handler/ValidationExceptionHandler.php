@@ -32,7 +32,7 @@ class ValidationExceptionHandler extends ExceptionHandler
         $format = [
             'requestId' => RequestIdHolder::getId(),
             'success' => false,
-            'message' => $body,
+            'message' => env('APP_DEBUG', true) ? $body : '',
             'code'    => MineCode::VALIDATE_FAILED,
         ];
         return $response->withHeader('Server', 'MineAdmin')
