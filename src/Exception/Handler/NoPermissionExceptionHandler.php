@@ -34,7 +34,7 @@ class NoPermissionExceptionHandler extends ExceptionHandler
         $format = [
             'requestId' => RequestIdHolder::getId(),
             'success' => false,
-            'message' => $throwable->getMessage(),
+            'message' => env('APP_DEBUG', true) ? $throwable->getMessage() : '',
             'code'    => MineCode::NO_PERMISSION,
         ];
         return $response->withHeader('Server', 'MineAdmin')

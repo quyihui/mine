@@ -34,7 +34,7 @@ class TokenExceptionHandler extends ExceptionHandler
         $format = [
             'requestId' => RequestIdHolder::getId(),
             'success' => false,
-            'message' => $throwable->getMessage(),
+            'message' => env('APP_DEBUG', true) ? $throwable->getMessage() : '',
             'code'    => MineCode::TOKEN_EXPIRED,
         ];
         return $response->withHeader('Server', 'MineAdmin')

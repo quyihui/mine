@@ -45,7 +45,7 @@ class AppExceptionHandler extends ExceptionHandler
             'requestId' => RequestIdHolder::getId(),
             'success' => false,
             'code'    => 500,
-            'message' => $throwable->getMessage()
+            'message' => env('APP_DEBUG', true) ? $throwable->getMessage() : ''
         ];
         return $response->withHeader('Server', 'MineAdmin')
             ->withHeader('Access-Control-Allow-Origin', '*')

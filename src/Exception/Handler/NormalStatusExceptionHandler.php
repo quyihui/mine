@@ -38,7 +38,7 @@ class NormalStatusExceptionHandler extends ExceptionHandler
         $format = [
             'requestId' => RequestIdHolder::getId(),
             'success' => false,
-            'message' => $throwable->getMessage(),
+            'message' => env('APP_DEBUG', true) ? $throwable->getMessage() : '',
         ];
         if ($throwable->getCode() != 200 && $throwable->getCode() != 0) {
             $format['code'] = $throwable->getCode();
